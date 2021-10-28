@@ -1,0 +1,15 @@
+var body = document.body;
+function getPosition(e) {
+    var mouseWorld = new THREE.Vector3();
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    mouseWorld.set(
+    ((e.clientX - left + 1) / width) * 2 - 1,
+    -((e.clientY - top + 1) / height) * 2 + 1,
+    (camera.near + camera.far) / (camera.near - camera.far),
+    );
+    mouseWorld.unproject(camera);
+    document.onclick = function () {
+ 
+    }
+}
+body.addEventListener('mousemove', getPosition, false);
